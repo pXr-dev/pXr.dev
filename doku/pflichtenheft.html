@@ -1,0 +1,1356 @@
+# Pflichtenheft – Persönliche Entwickler-Website
+
+## 1. Projektdaten
+
+**Projektname:** Persönliche Entwickler-Website
+**Projektart:** Webanwendung / Entwicklerportfolio
+**Projektziel:** Entwicklung einer modernen, responsiven und erweiterbaren persönlichen Website zur Präsentation der eigenen Person, des beruflichen Werdegangs, technischer Kenntnisse, eigener Projekte und des persönlichen Entwicklungsprozesses.
+
+**Version:** 1.0
+**Projektstatus:** Planung
+**Entwicklungsmodell:** Iterative Entwicklung in Phasen
+
+---
+
+# 2. Technische Zielarchitektur
+
+Die Website wird zunächst als **statische Webanwendung** entwickelt.
+
+### Basisarchitektur
+
+```text
+Portfolio/
+│
+├── index.html
+│
+├── css/
+│   ├── style.css
+│   └── responsive.css
+│
+├── js/
+│   └── script.js
+│
+├── images/
+│   ├── profile/
+│   ├── projects/
+│   └── interests/
+│
+├── documents/
+│   └── cv.pdf
+│
+├── projects/
+│
+└── README.md
+```
+
+Die konkrete Ordnerstruktur kann während der Entwicklung angepasst werden, wenn sich dadurch eine bessere Wartbarkeit ergibt.
+
+---
+
+# 3. Technologieauswahl
+
+Für die Basisversion werden folgende Technologien eingesetzt:
+
+### Frontend
+
+* HTML5
+* CSS3
+* JavaScript
+
+### Versionsverwaltung
+
+* Git
+* GitHub
+
+### Entwicklungsumgebung
+
+* VS Code oder vergleichbarer Editor
+
+### Deployment
+
+* Linux-Server
+* Webserver
+* eigene Domain
+* HTTPS
+
+Die Website soll zunächst ohne Framework entwickelt werden.
+
+Der bewusste Verzicht auf ein Framework ermöglicht es, HTML, CSS und JavaScript grundlegend zu verstehen und die technische Basis selbst aufzubauen.
+
+Ein Framework kann in einer späteren Entwicklungsphase ergänzt werden.
+
+---
+
+# 4. Architekturprinzipien
+
+Die Website wird nach folgenden Prinzipien entwickelt:
+
+* semantisches HTML
+* Trennung von Struktur, Darstellung und Logik
+* modulare CSS-Struktur
+* externes JavaScript
+* Wiederverwendbarkeit von Komponenten
+* möglichst geringe Abhängigkeiten
+* saubere Namenskonventionen
+* nachvollziehbare Projektstruktur
+* responsive Entwicklung
+* progressive Erweiterbarkeit
+
+HTML soll ausschließlich für die Struktur und Inhalte verwendet werden.
+
+CSS übernimmt:
+
+* Layout
+* Farben
+* Typografie
+* Animationen
+* Responsive Design
+
+JavaScript übernimmt:
+
+* Interaktionen
+* dynamische Zustände
+* Navigation
+* Filter
+* Animationen
+* spätere dynamische Funktionen
+
+---
+
+# 5. Seitenstruktur
+
+Die Website wird zunächst als Single-Page-Anwendung aufgebaut.
+
+Die Hauptbereiche werden über Navigation und Ankerpunkte erreichbar sein.
+
+```text
+/
+│
+├── #home
+├── #about
+├── #skills
+├── #projects
+├── #development
+├── #journal
+└── #contact
+```
+
+Spätere Projekt-Detailseiten können zusätzlich als separate Seiten implementiert werden.
+
+---
+
+# 6. Header
+
+Der Header wird als wiederverwendbarer Hauptbestandteil implementiert.
+
+### Desktop
+
+Der Header enthält:
+
+* Logo / Name
+* Navigation
+* optional externe Links
+* optional CV-Link
+
+### Mobile
+
+Bei kleineren Bildschirmbreiten wird die Navigation durch ein Hamburger-Menü ersetzt.
+
+Das Menü muss:
+
+* per Klick geöffnet werden
+* per Klick geschlossen werden
+* beim Öffnen visuell erkennbar sein
+* nach Auswahl eines Navigationspunktes automatisch schließen
+* per Tastatur bedienbar sein
+
+---
+
+# 7. Hero-Bereich
+
+Der Hero-Bereich bildet den Einstieg in die Website.
+
+### Inhalte
+
+```text
+Name
+Berufsbezeichnung
+Kurzbeschreibung
+CTA
+```
+
+Beispielhafte Struktur:
+
+```html
+<section id="home">
+    <p>ANWENDUNGSENTWICKLER</p>
+
+    <h1>
+        Name
+    </h1>
+
+    <p>
+        Kurze persönliche und technische Vorstellung.
+    </p>
+
+    <a href="#projects">
+        Projekte ansehen
+    </a>
+
+    <a href="#about">
+        Mehr über mich
+    </a>
+</section>
+```
+
+Der konkrete Text wird während der Content-Phase festgelegt.
+
+---
+
+# 8. Über-mich-Bereich
+
+Der Bereich wird in mehrere Unterkomponenten aufgeteilt.
+
+### Komponenten
+
+* Kurzprofil
+* beruflicher Werdegang
+* persönliche Motivation
+* persönliche Interessen
+
+---
+
+# 9. Werdegang-Timeline
+
+Der berufliche Werdegang wird als chronologische Timeline umgesetzt.
+
+Jeder Eintrag besitzt:
+
+```text
+Jahr / Zeitraum
+Position / Tätigkeit
+Unternehmen / Kontext
+Beschreibung
+relevante Technologien
+```
+
+Beispiel:
+
+```text
+2026
+│
+├── Tätigkeit
+│   Beschreibung
+│   Technologien
+│
+2025
+│
+├── Tätigkeit
+│   Beschreibung
+│
+2024
+│
+└── ...
+```
+
+Die Timeline muss auf mobilen Geräten automatisch in eine einspaltige Darstellung wechseln.
+
+---
+
+# 10. Skills-System
+
+Skills werden über Kategorien organisiert.
+
+### Datenstruktur
+
+Langfristig soll die Darstellung beispielsweise über JavaScript-Daten erfolgen können:
+
+```javascript
+const skills = [
+    {
+        category: "Programmiersprachen",
+        technologies: [
+            "JavaScript",
+            "Python"
+        ]
+    }
+];
+```
+
+Dadurch können neue Technologien hinzugefügt werden, ohne die komplette HTML-Struktur verändern zu müssen.
+
+---
+
+# 11. Skill-Status
+
+Jeder Skill erhält einen Entwicklungsstatus.
+
+```text
+active
+advanced
+learning
+basic
+planned
+```
+
+Diese Statuswerte werden visuell dargestellt.
+
+Beispiel:
+
+```text
+JavaScript       🟢 Aktiv
+Git              🟢 Aktiv
+Node.js          🟡 Vertiefung
+TypeScript       🟡 Lernen
+React            ⚪ Geplant
+```
+
+Die Farbe darf nicht das einzige Unterscheidungsmerkmal sein.
+
+Zusätzlich wird ein Text angezeigt.
+
+---
+
+# 12. Projektübersicht
+
+Die Projekte werden in Karten dargestellt.
+
+Jede Projektkarte enthält mindestens:
+
+* Projektname
+* Kurzbeschreibung
+* Status
+* Techstack
+* Entwicklungszeitraum
+* Link zur Detailansicht
+
+Beispiel:
+
+```text
+┌───────────────────────────────┐
+│ KIEZFIT                       │
+│                               │
+│ Fitnessstudio-Webprojekt      │
+│                               │
+│ HTML  CSS  JavaScript         │
+│                               │
+│ Status: 🟡 In Arbeit          │
+│                               │
+│ [Projekt ansehen]             │
+└───────────────────────────────┘
+```
+
+---
+
+# 13. Projektstatus
+
+Jedes Projekt erhält einen Gesamtstatus.
+
+### Statuswerte
+
+```text
+planned
+in-progress
+completed
+paused
+archived
+```
+
+Die Benutzeroberfläche übersetzt diese Werte in verständliche deutsche Bezeichnungen.
+
+Beispielsweise:
+
+```text
+planned       → Geplant
+in-progress   → In Arbeit
+completed     → Abgeschlossen
+paused        → Pausiert
+archived      → Archiviert
+```
+
+---
+
+# 14. Projektfortschritt
+
+Zusätzlich zum Gesamtstatus wird der Entwicklungsfortschritt einzelner Bereiche dargestellt.
+
+### Entwicklungsphasen
+
+```text
+Konzeption
+Planung
+Design
+Frontend
+Backend
+Datenbank
+Testing
+Deployment
+Dokumentation
+```
+
+Jede Phase erhält einen Status:
+
+```text
+completed
+in-progress
+open
+not-planned
+```
+
+---
+
+# 15. Projekt-Detailansicht
+
+Jedes größere Projekt erhält eine Detailseite.
+
+### Aufbau
+
+```text
+Projektübersicht
+│
+├── Problem / Ausgangssituation
+├── Ziel
+├── Anforderungen
+├── Planung
+├── Architektur
+├── Design
+├── Entwicklung
+├── Techstack
+├── Herausforderungen
+├── Lösungen
+├── Fortschritt
+├── Erkenntnisse
+└── Ergebnis
+```
+
+Optional:
+
+* Screenshots
+* Videos
+* Live-Demo
+* GitHub-Link
+* technische Dokumentation
+
+---
+
+# 16. Projekt-Datenmodell
+
+Projekte sollen langfristig strukturiert verwaltet werden können.
+
+Beispiel:
+
+```javascript
+const projects = [
+    {
+        title: "KIEZFIT",
+        description: "Persönliches Webprojekt",
+        status: "in-progress",
+        year: 2026,
+
+        technologies: [
+            "HTML",
+            "CSS",
+            "JavaScript"
+        ],
+
+        progress: {
+            concept: "completed",
+            html: "completed",
+            css: "completed",
+            javascript: "in-progress",
+            backend: "open",
+            database: "not-planned",
+            deployment: "completed"
+        }
+    }
+];
+```
+
+Diese Struktur ermöglicht später eine dynamische Darstellung.
+
+---
+
+# 17. Bereich „Meine Entwicklung“
+
+Der Entwicklungsbereich wird in drei Komponenten unterteilt:
+
+### Aktuelles Lernen
+
+Technologien und Themen, die aktuell gelernt werden.
+
+### Nächste Ziele
+
+Technologien und Themen, die als Nächstes behandelt werden.
+
+### Langfristige Ziele
+
+Technische bzw. berufliche Entwicklungsziele.
+
+---
+
+# 18. Entwicklungsprozess
+
+Die persönliche Vorgehensweise bei Projekten wird grafisch dargestellt.
+
+```text
+IDEA
+ ↓
+ANALYSIS
+ ↓
+CONCEPT
+ ↓
+DESIGN
+ ↓
+IMPLEMENTATION
+ ↓
+TESTING
+ ↓
+OPTIMIZATION
+ ↓
+DEPLOYMENT
+ ↓
+DOCUMENTATION
+```
+
+Jeder Schritt kann später mit konkreten Projekten verknüpft werden.
+
+---
+
+# 19. Development Journal
+
+Das Journal wird zunächst statisch implementiert.
+
+Jeder Beitrag erhält:
+
+```text
+id
+date
+title
+category
+project
+content
+tags
+```
+
+Beispiel:
+
+```javascript
+const journalEntries = [
+    {
+        id: 1,
+        date: "2026-08-17",
+        title: "Mobile Navigation",
+        category: "JavaScript",
+        project: "KIEZFIT",
+        tags: ["JavaScript", "Navigation"],
+        content: "..."
+    }
+];
+```
+
+Dadurch wird später eine dynamische Journal-Darstellung ermöglicht.
+
+---
+
+# 20. Journal-Darstellung
+
+Die Einträge werden chronologisch sortiert.
+
+Der neueste Eintrag steht oben.
+
+Jeder Eintrag zeigt:
+
+* Datum
+* Titel
+* Kategorie
+* Projekt
+* kurze Zusammenfassung
+* Tags
+* Link zu vollständigem Beitrag
+
+---
+
+# 21. Journal-Filter
+
+Als Erweiterung wird ein Filtersystem vorgesehen.
+
+Filtermöglichkeiten:
+
+```text
+Alle
+Projekte
+JavaScript
+Webentwicklung
+Linux
+Git
+Backend
+Lernen
+Fehler & Lösungen
+```
+
+Die Filterung erfolgt clientseitig über JavaScript.
+
+---
+
+# 22. Persönlicher Bereich
+
+Die persönlichen Inhalte werden bewusst getrennt von den technischen Inhalten dargestellt.
+
+Mögliche Kategorien:
+
+* Freizeit
+* Gaming
+* Sport
+* Technik
+* persönliche Interessen
+* sonstige Aktivitäten
+
+Die Darstellung kann über Karten oder visuelle Kategorien erfolgen.
+
+---
+
+# 23. Kontaktbereich
+
+Der Kontaktbereich enthält:
+
+* E-Mail
+* GitHub
+* LinkedIn
+* optional weitere Plattformen
+* optional CV-Download
+
+Ein Kontaktformular ist für die erste Version nicht zwingend erforderlich.
+
+Falls später implementiert, wird dafür ein Backend benötigt.
+
+---
+
+# 24. Footer
+
+Der Footer enthält:
+
+* Name / Logo
+* Copyright
+* Navigation
+* Social Links
+* Impressum
+* Datenschutz
+
+Die rechtlichen Anforderungen für den deutschen Betrieb der Website müssen vor Veröffentlichung geprüft und umgesetzt werden.
+
+---
+
+# 25. Responsive Design
+
+Das Layout wird nach dem Prinzip **Mobile First** entwickelt.
+
+### Zielgrößen
+
+```text
+Smartphone
+Tablet
+Laptop
+Desktop
+```
+
+Es werden keine festen Gerätemodelle vorausgesetzt.
+
+Das Layout soll sich anhand sinnvoller Breakpoints an die verfügbare Breite anpassen.
+
+---
+
+# 26. CSS-Struktur
+
+Das CSS wird modular organisiert.
+
+Beispiel:
+
+```text
+style.css
+│
+├── Reset / Base
+├── Variables
+├── Typography
+├── Layout
+├── Header
+├── Hero
+├── About
+├── Timeline
+├── Skills
+├── Projects
+├── Journal
+├── Contact
+├── Footer
+└── Responsive
+```
+
+Farben, Abstände und wiederkehrende Werte sollen über CSS Custom Properties verwaltet werden.
+
+Beispiel:
+
+```css
+:root {
+    --color-background: ...;
+    --color-surface: ...;
+    --color-text: ...;
+    --color-accent: ...;
+
+    --spacing-small: ...;
+    --spacing-medium: ...;
+    --spacing-large: ...;
+}
+```
+
+---
+
+# 27. JavaScript-Struktur
+
+JavaScript wird vollständig aus dem HTML ausgelagert.
+
+Grundstruktur:
+
+```text
+js/
+└── script.js
+```
+
+Bei zunehmender Größe kann die Struktur erweitert werden:
+
+```text
+js/
+├── main.js
+├── navigation.js
+├── projects.js
+├── journal.js
+└── ui.js
+```
+
+Die Aufteilung erfolgt erst, wenn die Größe des Projekts dies rechtfertigt.
+
+---
+
+# 28. Interaktionen
+
+Folgende Interaktionen werden vorgesehen:
+
+### Navigation
+
+* Mobile Navigation öffnen/schließen
+* Smooth Scrolling
+* aktiven Navigationspunkt anzeigen
+
+### Projekte
+
+* Projekt öffnen
+* Status anzeigen
+* optional Filter
+
+### Journal
+
+* Einträge öffnen
+* Kategorien filtern
+
+### UI
+
+* Hover-Effekte
+* dezente Animationen
+* Scroll-basierte Effekte
+
+Animationen dürfen die Benutzerfreundlichkeit nicht beeinträchtigen.
+
+---
+
+# 29. Accessibility
+
+Folgende technische Anforderungen werden umgesetzt:
+
+* semantische HTML5-Elemente
+* korrekte Überschriftenhierarchie
+* `alt`-Attribute
+* Tastaturbedienbarkeit
+* sichtbare Fokuszustände
+* ARIA nur dort, wo erforderlich
+* ausreichende Kontraste
+* verständliche Linktexte
+
+Das Hamburger-Menü muss beispielsweise mit Tastatur und Screenreader sinnvoll bedienbar sein.
+
+---
+
+# 30. Performance
+
+Die Website wird auf geringe Ladezeiten optimiert.
+
+### Maßnahmen
+
+* Bildkompression
+* moderne Bildformate
+* Lazy Loading
+* minimierte Ressourcen
+* Vermeidung unnötiger Libraries
+* möglichst geringe JavaScript-Ausführung
+* effiziente CSS-Struktur
+
+---
+
+# 31. SEO
+
+Technische SEO-Grundlagen werden implementiert.
+
+### HTML
+
+```html
+<title>
+<meta name="description">
+<meta name="viewport">
+```
+
+Zusätzlich:
+
+* semantische Überschriften
+* strukturierte Inhalte
+* sprechende URLs
+* Alt-Texte
+* Open-Graph-Metadaten
+* gegebenenfalls strukturierte Daten
+
+---
+
+# 32. Browserkompatibilität
+
+Unterstützt werden aktuelle Versionen der gängigen Browser:
+
+* Chrome
+* Edge
+* Firefox
+* Safari
+
+Die Website soll insbesondere auf aktuellen Desktop- und Mobilbrowsern funktionieren.
+
+---
+
+# 33. Git-Workflow
+
+Das Projekt wird über Git versioniert.
+
+### Grundstruktur
+
+```text
+main
+│
+├── development
+│
+└── feature/*
+```
+
+Neue Funktionen werden vorzugsweise in eigenen Feature-Branches entwickelt.
+
+Nach erfolgreicher Prüfung werden Änderungen in den Entwicklungs- bzw. Hauptbranch übernommen.
+
+---
+
+# 34. Commit-Konvention
+
+Commits sollen nach Möglichkeit eine klare Aussage über die Änderung enthalten.
+
+Beispiele:
+
+```text
+feat: mobile navigation hinzugefügt
+fix: overflow auf mobilen geräten behoben
+style: projektkarten angepasst
+refactor: javascript ausgelagert
+docs: projektbeschreibung ergänzt
+```
+
+---
+
+# 35. Entwicklungsumgebung
+
+Die lokale Entwicklung erfolgt zunächst auf dem eigenen Rechner.
+
+Benötigt werden:
+
+* Code-Editor
+* Browser
+* Git
+* optional lokale Entwicklungsumgebung
+* Terminal
+
+Die Website muss lokal ohne komplexe Infrastruktur entwickelt werden können.
+
+---
+
+# 36. Deployment
+
+Nach Abschluss einer stabilen Version wird die Website auf einem Linux-Server bereitgestellt.
+
+### Deployment-Prozess
+
+```text
+Lokale Entwicklung
+        ↓
+Git Commit
+        ↓
+Git Repository
+        ↓
+Deployment
+        ↓
+Webserver
+        ↓
+HTTPS
+        ↓
+Öffentliche Website
+```
+
+Der Deployment-Prozess soll später möglichst automatisiert werden.
+
+---
+
+# 37. Sicherheit
+
+Für die statische Version bestehen nur geringe serverseitige Angriffsflächen.
+
+Trotzdem werden folgende Punkte umgesetzt:
+
+* HTTPS
+* aktuelle Serverkomponenten
+* sichere Serverkonfiguration
+* keine unnötigen Dienste
+* keine sensiblen Daten im Repository
+* keine Passwörter oder API-Keys im Quellcode
+
+`.gitignore` wird entsprechend eingerichtet.
+
+---
+
+# 38. Datenschutz und rechtliche Anforderungen
+
+Da die Website öffentlich betrieben wird, müssen vor Veröffentlichung insbesondere folgende Punkte geprüft werden:
+
+* Impressum
+* Datenschutzerklärung
+* verwendete externe Dienste
+* externe Fonts
+* Analysewerkzeuge
+* eingebundene Inhalte
+* Kontaktformular
+* Cookies
+
+Es sollen möglichst wenige externe Dienste eingesetzt werden.
+
+---
+
+# 39. Projektphasen
+
+## Phase 1 – Konzeption
+
+Ergebnis:
+
+* vollständige Seitenstruktur
+* Inhaltskonzept
+* Designrichtung
+* technische Grundentscheidung
+
+---
+
+## Phase 2 – Projektgrundlage
+
+Ergebnis:
+
+```text
+HTML
+CSS
+JavaScript
+Git
+README
+```
+
+Projekt läuft lokal.
+
+---
+
+## Phase 3 – Grundlayout
+
+Umsetzung:
+
+* Header
+* Navigation
+* Hero
+* Footer
+* grundlegendes Layout
+
+---
+
+## Phase 4 – Responsive Design
+
+Umsetzung:
+
+* Mobile First
+* Tablet
+* Desktop
+* Navigation
+* responsive Komponenten
+
+---
+
+## Phase 5 – Persönliche Inhalte
+
+Umsetzung:
+
+* Über mich
+* Werdegang
+* Interessen
+* Kontakt
+
+---
+
+## Phase 6 – Skills
+
+Umsetzung:
+
+* Skill-Kategorien
+* Skill-Status
+* Techstack-Darstellung
+
+---
+
+## Phase 7 – Projekte
+
+Umsetzung:
+
+* Projektkarten
+* Projektstatus
+* Ampelsystem
+* Techstack
+* Detailseiten
+
+---
+
+## Phase 8 – Development Journal
+
+Umsetzung:
+
+* Journal
+* Beiträge
+* Kategorien
+* Tags
+* Filter
+
+---
+
+## Phase 9 – Interaktionen
+
+Umsetzung:
+
+* JavaScript
+* Navigation
+* Filter
+* Animationen
+* dynamische Komponenten
+
+---
+
+## Phase 10 – Optimierung
+
+Prüfung:
+
+* Responsive Design
+* Accessibility
+* SEO
+* Performance
+* Browserkompatibilität
+* Codequalität
+
+---
+
+## Phase 11 – Deployment
+
+Umsetzung:
+
+* Server
+* Domain
+* HTTPS
+* Webserver
+* Deployment
+
+---
+
+## Phase 12 – Weiterentwicklung
+
+Nach Veröffentlichung:
+
+* neue Projekte
+* neue Journal-Einträge
+* neue Skills
+* Verbesserungen
+* zusätzliche Funktionen
+
+---
+
+# 40. Testkonzept
+
+Jede Entwicklungsphase wird getestet.
+
+## Funktionale Tests
+
+Zu prüfen sind:
+
+* Navigation
+* Links
+* Buttons
+* Mobile Menü
+* Filter
+* Projektansichten
+* Journal
+* externe Links
+
+## Responsive Tests
+
+Test auf:
+
+* Smartphone
+* Tablet
+* Laptop
+* Desktop
+
+Zusätzlich sollen verschiedene Bildschirmbreiten manuell getestet werden.
+
+## Browser Tests
+
+Mindestens:
+
+* Chrome
+* Edge
+* Firefox
+
+Safari wird berücksichtigt, sofern entsprechende Testmöglichkeit vorhanden ist.
+
+---
+
+# 41. Abnahmekriterien
+
+Die Basisversion gilt als technisch fertig, wenn:
+
+### Funktional
+
+* alle Navigationselemente funktionieren
+* alle Bereiche erreichbar sind
+* mobile Navigation funktioniert
+* Projekte korrekt dargestellt werden
+* Projektstatus korrekt angezeigt wird
+* Journal funktioniert
+* externe Links funktionieren
+* Kontaktmöglichkeiten funktionieren
+
+### Responsive
+
+* keine ungewollten horizontalen Überläufe auftreten
+* Inhalte auf Smartphone korrekt dargestellt werden
+* Tablet-Darstellung funktioniert
+* Desktop-Darstellung funktioniert
+
+### Technisch
+
+* HTML valide bzw. semantisch korrekt aufgebaut ist
+* CSS strukturiert ist
+* JavaScript extern eingebunden ist
+* keine unnötigen Abhängigkeiten vorhanden sind
+* Git-Repository vorhanden ist
+* README vorhanden ist
+
+### Qualität
+
+* verständliche Navigation
+* konsistentes Design
+* ausreichende Kontraste
+* Tastaturbedienbarkeit
+* angemessene Ladezeit
+* grundlegende SEO-Anforderungen
+
+### Deployment
+
+* Website öffentlich erreichbar
+* HTTPS aktiv
+* Domain erreichbar
+* Webserver korrekt konfiguriert
+
+---
+
+# 42. Erweiterungsarchitektur
+
+Obwohl die erste Version statisch umgesetzt wird, soll die Architektur eine spätere Erweiterung ermöglichen.
+
+### Mögliche Version 2
+
+```text
+Frontend
+   │
+   ↓
+Backend / API
+   │
+   ↓
+Datenbank
+```
+
+Damit könnten später beispielsweise folgende Inhalte dynamisch verwaltet werden:
+
+* Projekte
+* Journal-Einträge
+* Skills
+* Kategorien
+* Entwicklungsstatus
+
+---
+
+# 43. Mögliche zukünftige Technologien
+
+Die folgenden Technologien werden bewusst nicht Bestandteil der ersten Version, können aber später eingesetzt werden:
+
+### Frontend
+
+* TypeScript
+* React
+* Vue
+* Svelte
+
+### Backend
+
+* Node.js
+* Express
+* weitere Backend-Technologien
+
+### Datenbank
+
+* PostgreSQL
+* SQLite
+* weitere relationale Datenbanken
+
+### Infrastruktur
+
+* Docker
+* CI/CD
+* automatisiertes Deployment
+* Cloud-Dienste
+
+Die Auswahl erfolgt erst, wenn ein konkreter technischer Bedarf besteht.
+
+---
+
+# 44. Qualitätsanforderungen
+
+Der Quellcode soll:
+
+* verständlich
+* wartbar
+* erweiterbar
+* nachvollziehbar
+* möglichst DRY
+* semantisch korrekt
+* konsistent formatiert
+
+sein.
+
+Es sollen keine unnötig komplexen Lösungen eingesetzt werden.
+
+Grundsatz:
+
+> **So einfach wie möglich, so komplex wie nötig.**
+
+---
+
+# 45. Dokumentation des Projekts
+
+Das Projekt erhält eine README-Datei mit:
+
+```text
+Projektbeschreibung
+Technologien
+Installation
+Projektstruktur
+Entwicklung
+Deployment
+bekannte Probleme
+zukünftige Erweiterungen
+```
+
+Zusätzlich wird das Development Journal als laufende Projektdokumentation verwendet.
+
+---
+
+# 46. Versionierung der Website
+
+Die Website wird versioniert.
+
+Beispiel:
+
+```text
+v0.1 – Projektgrundlage
+v0.2 – Grundlayout
+v0.3 – Responsive Design
+v0.4 – Persönliche Inhalte
+v0.5 – Projekte
+v0.6 – Journal
+v0.7 – Interaktionen
+v0.8 – Optimierung
+v1.0 – Veröffentlichung
+```
+
+Nach Version 1.0 beginnt die kontinuierliche Weiterentwicklung.
+
+---
+
+# 47. Gesamtarchitektur
+
+Die langfristig angestrebte Architektur lautet:
+
+```text
+                    PORTFOLIO
+                        │
+        ┌───────────────┼────────────────┐
+        │               │                │
+     PERSON          TECHNIK          PROJEKTE
+        │               │                │
+   Über mich          Skills         Projektübersicht
+   Werdegang          Lernen         Projektstatus
+   Interessen         Tools          Techstack
+        │               │                │
+        └───────────────┼────────────────┘
+                        │
+                 ENTWICKLUNG
+                        │
+              ┌─────────┴─────────┐
+              │                   │
+         DEVELOPMENT          JOURNAL
+          PROCESS             ENTRIES
+              │                   │
+              └─────────┬─────────┘
+                        │
+                     KONTAKT
+```
+
+---
+
+# 48. Endziel
+
+Das Endprodukt soll nicht lediglich eine statische persönliche Website sein.
+
+Es soll ein dauerhaft weiterentwickeltes persönliches Entwicklerportfolio entstehen, das drei Ebenen miteinander verbindet:
+
+### Ebene 1 – Person
+
+Wer bin ich?
+
+### Ebene 2 – Kompetenz
+
+Was kann ich und welche Technologien beherrsche bzw. lerne ich?
+
+### Ebene 3 – Entwicklung
+
+Was baue ich, wie arbeite ich und wie entwickle ich mich weiter?
+
+Das zentrale Prinzip der technischen Umsetzung lautet:
+
+> **Die Website soll nicht nur meine Fähigkeiten zeigen – ihre eigene Entwicklung soll diese Fähigkeiten beweisen.**
+
+Damit wird die Website selbst zu einem langfristigen Referenzprojekt für meine Entwicklung als Anwendungsentwickler.

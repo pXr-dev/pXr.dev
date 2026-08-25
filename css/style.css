@@ -1,0 +1,1723 @@
+:root {
+
+    /* COLORS */
+
+    --color-background: #0D0F10;
+    --color-surface: #15181A;
+    --color-card: #1C2023;
+
+    --color-text: #F1F3F4;
+    --color-text-muted: #9AA1A6;
+
+    --color-border: #2A2F33;
+
+    --color-accent: #B7F000;
+
+
+    /* LAYOUT */
+
+    --content-width: 1200px;
+
+    --section-padding: 100px;
+
+
+    /* SPACING */
+
+    --space-xs: 8px;
+    --space-sm: 16px;
+    --space-md: 24px;
+    --space-lg: 40px;
+    --space-xl: 64px;
+
+
+    /* TYPOGRAPHY */
+
+    --font-main: Arial, Helvetica, sans-serif;
+
+
+    /* TRANSITIONS */
+
+    --transition-fast: 0.2s ease;
+}
+
+/* ----- RESET ----- */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--color-background);
+    color: var(--color-text);
+    font-family: var(--font-main);
+    line-height: 1.6;
+}
+
+/* ----- LAYOUT ----- */
+
+main {
+    width: 100%;
+}
+
+section {
+    width: min(100% - 40px, var(--content-width));
+    margin: 0 auto;
+    padding: var(--section-padding) 0;
+}
+
+/* ----- TYPOGRAPHY ----- */
+
+h1,
+h2,
+h3 {
+    line-height: 1.1;
+}
+
+h1 {
+    font-size: clamp(3rem, 7vw, 6rem);
+    max-width: 1000px;
+}
+
+h2 {
+    font-size: clamp(2rem, 4vw, 3.5rem);
+}
+
+h3 {
+    font-size: 1.5rem;
+}
+
+p {
+    max-width: 700px;
+    color: var(--color-text-muted);
+}
+
+/* ----- LINKS ----- */
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+a:hover {
+    color: var(--color-accent);
+}
+
+/* ----- HEADER ----- */
+
+header {
+    width: min(100% - 40px, var(--content-width));
+    margin: 0 auto;
+
+    padding: 18px 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    border-bottom: 1px solid color-mix(
+    in srgb,
+    var(--color-accent) 25%,
+    transparent
+    );
+}
+
+/* ----- LOGO ----- */
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+
+    color: var(--color-text);
+
+    transition: color var(--transition-fast);
+}
+
+.logo:hover {
+    color: var(--color-accent);
+}
+
+/* ----- NAVIGATION ----- */
+nav ul {
+    display: flex;
+    align-items: center;
+
+    gap: 32px;
+
+    list-style: none;
+}
+
+nav a {
+    position: relative;
+
+    color: var(--color-text);
+
+    font-size: 0.95rem;
+    font-weight: 500;
+
+    transition: color var(--transition-fast);
+}
+
+nav a:hover {
+    color: var(--color-text);
+}
+
+nav a::after {
+    content: "";
+
+    position: absolute;
+    left: 0;
+    bottom: -8px;
+
+    width: 100%;
+    height: 0.5px;
+
+    background-color: var(--color-accent);
+
+    transform: scaleX(0);
+    transform-origin: right;
+
+    transition: transform var(--transition-fast);
+}
+
+nav a:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+/* ----- HERO ----- */
+
+.hero {
+    position: relative;
+
+    min-height: calc(100vh - 89px);
+
+    display: flex;
+    align-items: center;
+
+    padding-top: 60px;
+    padding-bottom: 100px;
+
+    overflow: hidden;
+}
+
+/* ----- HERO CONTENT ----- */
+
+.hero-content {
+    position: relative;
+
+    z-index: 2;
+
+    width: 100%;
+    max-width: 1100px;
+
+    padding-left: 20px;
+}
+
+/* ----- HERO BACKGROUND ----- */
+
+.hero-background {
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 1;
+
+    pointer-events: none;
+
+    overflow: hidden;
+}
+
+/* ----- TECHNICAL GRID ----- */
+
+.hero-background::before {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background-image:
+        linear-gradient(
+            to right,
+            rgba(255, 255, 255, 0.025) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            to bottom,
+            rgba(255, 255, 255, 0.025) 1px,
+            transparent 1px
+        );
+
+    background-size: 80px 80px;
+
+    mask-image: linear-gradient(
+        to bottom,
+        black 0%,
+        transparent 85%
+    );
+}
+
+/* ----- ACCENT GLOW ----- */
+
+.hero-background::after {
+    content: "";
+
+    position: absolute;
+
+    top: 20%;
+    right: 10%;
+
+    width: 500px;
+    height: 500px;
+
+    background: var(--color-accent);
+
+    opacity: 0.035;
+
+    filter: blur(120px);
+
+    border-radius: 50%;
+}
+
+/* ----- ROLE ----- */
+
+.hero-role {
+    margin-bottom: 24px;
+
+    color: var(--color-accent);
+
+    font-size: 1.0rem;
+    font-weight: 600;
+
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+/* ----- HERO HEADING ----- */
+
+.hero h1 {
+    max-width: 1050px;
+
+    font-size: clamp(3.5rem, 7vw, 6.5rem);
+    font-weight: 700;
+
+    line-height: 0.98;
+    letter-spacing: -0.05em;
+}
+
+.hero h1 span {
+    display: block;
+
+    margin-top: 8px;
+
+    color: var(--color-text-muted);
+
+    font-weight: 600;
+}
+
+/* ----- TEXT ----- */
+
+.hero-text {
+    margin-top: 25px;
+
+    max-width: 620px;
+
+    font-size: 1.1rem;
+    line-height: 1.8;
+
+    color: var(--color-text-muted);
+}
+
+/* ----- HERO ACTIONS ----- */
+
+.hero-actions {
+    display: flex;
+    align-items: center;
+
+    gap: 16px;
+
+    margin-top: 44px;
+}
+
+/* ----- PRIMARY BUTTON ----- */
+
+.hero-actions a:first-child {
+    position: relative;
+
+    padding: 14px 26px;
+
+    background-color: var(--color-accent);
+    color: var(--color-background);
+
+    font-size: 0.95rem;
+    font-weight: 700;
+
+    border: 1px solid var(--color-accent);
+
+    transition:
+        transform var(--transition-fast),
+        box-shadow var(--transition-fast);
+}
+
+.hero-actions a:first-child:hover {
+    color: var(--color-background);
+
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 8px 30px rgba(183, 240, 0, 0.12);
+}
+
+/* ----- SECONDARY BUTTON ----- */
+
+.hero-actions a:last-child {
+    padding: 14px 26px;
+
+    border: 1px solid var(--color-border);
+
+    color: var(--color-text);
+
+    font-size: 0.95rem;
+    font-weight: 600;
+
+    transition:
+        border-color var(--transition-fast),
+        color var(--transition-fast),
+        background-color var(--transition-fast);
+}
+
+.hero-actions a:last-child:hover {
+    color: var(--color-accent);
+
+    border-color: var(--color-accent);
+
+    background-color: rgba(183, 240, 0, 0.03);
+}
+
+/* ----- BUTTON FOCUS ----- */
+
+.hero-actions a:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 4px;
+}
+
+/* ----- SECTION HEADER ----- */
+
+.section-header {
+    margin-bottom: 48px;
+}
+
+.section-label {
+    margin-bottom: 20px;
+
+    color: var(--color-accent);
+
+    font-size: 0.75rem;
+    font-weight: 600;
+
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+/* ----- ABOUT ----- */
+
+#about {
+    border-top: 1px solid var(--color-border);
+
+    padding-top: 140px;
+}
+
+.about-content {
+    max-width: 720px;
+    margin-top: 32px;
+}
+
+.about-text {
+    display: flex;
+    flex-direction: column;
+
+    gap: 16px;
+}
+
+#about h2 {
+    max-width: 700px;
+
+    font-size: clamp(3rem, 6vw, 5rem);
+
+    letter-spacing: -0.045em;
+}
+
+#about h3 {
+    margin-top: 16px;
+
+    max-width: 600px;
+
+    color: var(--color-text);
+
+    font-size: clamp(1.25rem, 2vw, 1.5rem);
+
+    font-weight: 500;
+    line-height: 1.4;
+}
+
+.about-text p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+}
+
+/* ----- CAREER ----- */
+
+.career {
+    margin-top: 120px;
+    padding-top: 80px;
+
+    border-top: 1px solid var(--color-border);
+}
+
+/* ----- CAREER TIMELINE ----- */
+
+.career-timeline {
+    position: relative;
+
+    margin-top: 64px;
+    padding-left: 48px;
+
+    border-left: 1px solid var(--color-border);
+}
+
+.career-item {
+    position: relative;
+
+    padding-bottom: 40px;
+}
+
+.career-item:last-child {
+    padding-bottom: 0;
+}
+
+/* ----- CAREER YEAR ----- */
+
+.career-year {
+    display: block;
+
+    margin-bottom: 12px;
+
+    color: var(--color-accent);
+
+    font-size: 0.8rem;
+    font-weight: 600;
+
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+/* ----- CAREER TIMELINE MARKER ----- */
+
+.career-item::before {
+    content: "";
+
+    position: absolute;
+
+    top: 5px;
+    left: -54px;
+
+    width: 9px;
+    height: 9px;
+
+    background-color: var(--color-background);
+
+    border: 2px solid var(--color-border);
+
+    border-radius: 50%;
+}
+
+/* ----- CURRENT CAREER ----- */
+
+.career-current::before {
+    background-color: var(--color-accent);
+
+    border-color: var(--color-accent);
+
+    box-shadow:
+        0 0 0 6px rgba(183, 240, 0, 0.06);
+}
+
+/* ----- CAREER HEADING ----- */
+
+.career-item h4 {
+    margin-bottom: 8px;
+
+    font-size: 1.5rem;
+    font-weight: 600;
+
+    line-height: 1.2;
+}
+
+/* ----- CAREER COMPANY ----- */
+
+.career-company {
+    margin-bottom: 20px;
+
+    color: var(--color-text);
+
+    font-size: 0.95rem;
+    font-weight: 500;
+}
+
+/* ----- CAREER DETAILS ----- */
+
+.career-item ul {
+    display: flex;
+    flex-direction: column;
+
+    gap: 10px;
+
+    max-width: 700px;
+
+    list-style: none;
+}
+
+.career-item li {
+    position: relative;
+
+    padding-left: 18px;
+
+    color: var(--color-text-muted);
+
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+.career-item li::before {
+    content: "→";
+
+    position: absolute;
+
+    left: 0;
+
+    color: var(--color-accent);
+}
+
+.career h3 {
+    margin-bottom: 20px;
+
+    font-size: clamp(2.2rem, 3.5vw, 2.8rem);
+    letter-spacing: -0.035em;
+}
+
+/* ----- EDUCATION ----- */
+
+.education {
+    margin-top: 120px;
+    padding-top: 80px;
+
+    border-top: 1px solid var(--color-border);
+}
+
+/* ----- EDUCATION TIMELINE ----- */
+
+.education-timeline {
+    position: relative;
+
+    margin-top: 64px;
+    padding-left: 48px;
+
+    border-left: 1px solid var(--color-border);
+}
+
+.education-item {
+    position: relative;
+
+    padding-bottom: 20px;
+}
+
+.education-item:last-child {
+    padding-bottom: 0;
+}
+
+/* ----- EDUCATION MARKER ----- */
+
+.education-item::before {
+    content: "";
+
+    position: absolute;
+
+    top: 5px;
+    left: -54px;
+
+    width: 7px;
+    height: 7px;
+
+    background-color: var(--color-background);
+
+    border: 1px solid var(--color-border);
+
+    border-radius: 50%;
+}
+
+/* ----- EDUCATION YEAR ----- */
+
+.education-year {
+    display: block;
+
+    margin-bottom: 10px;
+
+    color: var(--color-accent);
+
+    font-size: 0.75rem;
+    font-weight: 500;
+
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+/* ----- EDUCATION HEADING ----- */
+
+.education-item h4 {
+    margin-bottom: 8px;
+
+    font-size: 1.25rem;
+    font-weight: 600;
+
+    line-height: 1.3;
+}
+
+/* ----- EDUCATION COMPANY ----- */
+
+.education-company {
+    margin-bottom: 12px;
+
+    color: var(--color-text);
+
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.education h3 {
+    margin-bottom: 20px;
+
+    font-size: clamp(2.2rem, 3.5vw, 2.8rem);
+    letter-spacing: -0.035em;
+}
+
+/* ----- SKILLS ----- */
+
+#skills {
+    border-top: 1px solid var(--color-border);
+
+    padding-top: 140px;
+}
+
+
+/* ----- SKILLS HEADER ----- */
+
+#skills .section-heading {
+    max-width: 760px;
+}
+
+#skills .section-label {
+    display: block;
+
+    margin-bottom: 20px;
+}
+
+#skills .section-heading h2 {
+    max-width: 800px;
+
+    font-size: clamp(3rem, 6vw, 5rem);
+
+    letter-spacing: -0.045em;
+}
+
+#skills .section-heading h2 span {
+    display: block;
+
+    color: var(--color-text-muted);
+}
+
+#skills .section-heading p {
+    margin-top: 24px;
+
+    font-size: 1.05rem;
+    line-height: 1.8;
+}
+
+
+/* ----- SKILLS GRID ----- */
+
+.skills-grid {
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    margin-top: 80px;
+
+    border-top: 1px solid var(--color-border);
+    border-bottom: 1px solid var(--color-border);
+}
+
+
+/* ----- SKILL CARD ----- */
+
+.skill-card {
+    display: flex;
+    flex-direction: column;
+
+    min-height: 400px;
+
+    padding: 36px;
+
+    border-right: 1px solid var(--color-border);
+}
+
+.skill-card:last-child {
+    border-right: none;
+}
+
+
+/* ----- SKILL STATUS ----- */
+
+.skill-status {
+    display: block;
+
+    margin-bottom: 16px;
+
+    color: var(--color-accent);
+
+    font-size: 0.7rem;
+    font-weight: 600;
+
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+/* ----- SKILL STATUS STATES ----- */
+
+.skill-learning .skill-status,
+.skill-next .skill-status {
+    color: var(--color-text-muted);
+}
+
+
+/* ----- SKILL HEADING ----- */
+
+.skill-card h3 {
+    margin-bottom: 16px;
+
+    font-size: 1.5rem;
+    font-weight: 600;
+
+    line-height: 1.2;
+}
+
+
+/* ----- SKILL DESCRIPTION ----- */
+
+.skill-card > p {
+    max-width: 420px;
+
+    min-height: 105px;
+
+    margin-bottom: 40px;
+
+    font-size: 0.95rem;
+    line-height: 1.7;
+}
+
+/* ----- SKILL LIST ----- */
+
+.skill-list {
+    display: flex;
+    flex-wrap: wrap;
+
+    gap: 8px;
+
+    margin-top: auto;
+}
+
+/* ----- SKILL TAG ----- */
+
+.skill-list span {
+    padding: 7px 11px;
+
+    border: 1px solid var(--color-border);
+
+    color: var(--color-text-muted);
+
+    font-size: 0.75rem;
+    font-weight: 500;
+
+    transition:
+        color var(--transition-fast),
+        border-color var(--transition-fast),
+        background-color var(--transition-fast);
+}
+
+/* ----- SKILL TAG HOVER ----- */
+
+.skill-list span {
+    transition:
+        color var(--transition-fast),
+        border-color var(--transition-fast),
+        background-color var(--transition-fast),
+        transform var(--transition-fast);
+}
+
+.skill-list span:hover {
+    color: var(--color-accent);
+
+    border-color: var(--color-accent);
+
+    background-color: rgba(183, 240, 0, 0.03);
+
+    transform: translateY(-2px);
+}
+
+/* ----- CUBES ----- */
+
+.cube {
+    position: absolute;
+
+    width: 110px;
+    height: 110px;
+
+    border: 1px solid var(--color-accent);
+
+    opacity: 0.18;
+
+    transform: rotate(30deg) skewY(-30deg);
+
+    animation:
+        cubeFloat 12s ease-in-out infinite;
+
+    transition: opacity var(--transition-fast);
+}
+
+.cube-1 {
+    top: 8%;
+    right: 10%;
+
+    width: 140px;
+    height: 140px;
+
+    animation-duration: 16s;
+}
+
+.cube-2 {
+    top: 38%;
+    right: 25%;
+
+    width: 80px;
+    height: 80px;
+
+    opacity: 0.12;
+
+    animation-duration: 11s;
+}
+
+.cube-3 {
+    bottom: 10%;
+    right: 8%;
+
+    width: 180px;
+    height: 180px;
+
+    opacity: 0.10;
+
+    animation-duration: 19s;
+}
+
+.cube-4 {
+    top: 20%;
+    left: 4%;
+
+    width: 70px;
+    height: 70px;
+
+    opacity: 0.10;
+
+    animation-duration: 14s;
+}
+
+.cube-5 {
+    bottom: 20%;
+    left: 10%;
+
+    width: 120px;
+    height: 120px;
+
+    opacity: 0.08;
+
+    animation-duration: 17s;
+}
+
+.cube-6 {
+    top: 58%;
+    right: 44%;
+
+    width: 60px;
+    height: 60px;
+
+    opacity: 0.08;
+
+    animation-duration: 10s;
+}
+
+.cube-7 {
+    bottom: 8%;
+    right: 38%;
+
+    width: 90px;
+    height: 90px;
+
+    opacity: 0.10;
+
+    animation-duration: 15s;
+}
+
+/* ----- CUBE ANIMATION ----- */
+
+@keyframes cubeFloat {
+    0%,
+    100% {
+        transform: rotate(30deg) skewY(-30deg) translate(0, 0);
+    }
+
+    50% {
+        transform: rotate(32deg) skewY(-30deg) translate(12px, -10px);
+    }
+}
+
+/* ----- REDUCED MOTION ----- */
+
+@media (prefers-reduced-motion: reduce) {
+
+    html {
+        scroll-behavior: auto;
+    }
+
+    .cube {
+        animation: none;
+    }
+}
+
+/* ----- PROJECTS ----- */
+
+#projects {
+    border-top: 1px solid var(--color-border);
+
+    padding-top: 140px;
+}
+
+/* ----- PROJECTS HEADER ----- */
+
+#projects .section-heading {
+    max-width: 760px;
+}
+
+#projects .section-label {
+    display: block;
+
+    margin-bottom: 20px;
+}
+
+#projects .section-heading h2 {
+    max-width: 800px;
+
+    font-size: clamp(3rem, 6vw, 5rem);
+
+    letter-spacing: -0.045em;
+}
+
+#projects .section-heading h2 span {
+    display: block;
+
+    color: var(--color-text-muted);
+}
+
+#projects .section-heading p {
+    margin-top: 24px;
+
+    font-size: 1.05rem;
+    line-height: 1.8;
+}
+
+
+/* ----- PROJECT LIST ----- */
+
+.projects-list {
+    display: flex;
+    flex-direction: column;
+
+    gap: 24px;
+
+    margin-top: 64px;
+}
+
+
+/* ----- PROJECT CARD ----- */
+
+.project-card {
+    position: relative;
+
+    display: grid;
+    grid-template-columns: 180px 1fr;
+
+    min-height: 320px;
+
+    background-color: var(--color-surface);
+
+    border: 1px solid var(--color-border);
+
+    transition:
+        border-color var(--transition-fast),
+        transform var(--transition-fast);
+}
+
+
+.project-card:hover {
+    border-color: var(--color-accent);
+
+    transform: translateY(-4px);
+}
+
+
+/* ----- PROJECT NUMBER ----- */
+
+.project-number {
+    padding: 32px;
+
+    color: var(--color-accent);
+
+    font-size: 0.7rem;
+    font-weight: 600;
+
+    letter-spacing: 0.12em;
+}
+
+
+/* ----- PROJECT CONTENT ----- */
+
+.project-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    padding: 32px;
+
+    border-left: 1px solid var(--color-border);
+}
+
+
+/* ----- PROJECT INFO ----- */
+
+.project-info h4 {
+    margin-bottom: 8px;
+
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 700;
+
+    letter-spacing: -0.04em;
+}
+
+
+.project-type {
+    margin-bottom: 24px;
+
+    color: var(--color-text);
+
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+
+.project-info > p:last-child {
+    max-width: 650px;
+
+    font-size: 1rem;
+    line-height: 1.8;
+}
+
+
+/* ----- PROJECT META ----- */
+
+.project-meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 24px;
+
+    margin-top: 48px;
+
+    padding-top: 20px;
+
+    border-top: 1px solid var(--color-border);
+}
+
+
+/* ----- PROJECT TECHNOLOGIES ----- */
+
+.project-technologies {
+    display: flex;
+    flex-wrap: wrap;
+
+    gap: 8px;
+}
+
+
+.project-technologies span {
+    padding: 6px 10px;
+
+    border: 1px solid var(--color-border);
+
+    color: var(--color-text-muted);
+
+    font-size: 0.7rem;
+    font-weight: 600;
+
+    letter-spacing: 0.05em;
+}
+
+
+/* ----- PROJECT LINK ----- */
+
+.project-link {
+    color: var(--color-text);
+
+    font-size: 0.85rem;
+    font-weight: 600;
+
+    transition: color var(--transition-fast);
+}
+
+
+.project-link:hover {
+    color: var(--color-accent);
+}
+
+
+/* ----- PROJECT PLACEHOLDER ----- */
+
+.project-placeholder {
+    min-height: 220px;
+
+    opacity: 0.55;
+}
+
+/* ----- DEVELOPMENT / ROADMAP ----- */
+
+#development {
+    border-top: 1px solid var(--color-border);
+
+    padding-top: 140px;
+}
+
+
+/* ----- DEVELOPMENT HEADER ----- */
+
+#development .section-header {
+    max-width: 760px;
+}
+
+#development .section-header h2 {
+    max-width: 850px;
+
+    font-size: clamp(3rem, 6vw, 5rem);
+
+    letter-spacing: -0.045em;
+}
+
+#development .section-header h3 {
+    margin-top: 20px;
+
+    color: var(--color-text);
+
+    font-size: clamp(1.25rem, 2vw, 1.5rem);
+
+    font-weight: 500;
+    line-height: 1.4;
+}
+
+#development .section-header p:not(.section-label) {
+    margin-top: 24px;
+
+    font-size: 1.05rem;
+    line-height: 1.8;
+}
+
+/* ----- ROADMAP ----- */
+
+.development-roadmap {
+    position: relative;
+
+    max-width: 1100px;
+
+    margin-top: 64px;
+
+    padding-left: 80px;
+}
+
+/* ----- ROADMAP LINE ----- */
+
+.development-roadmap::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    bottom: 0;
+    left: 24px;
+
+    width: 1px;
+
+    background-color: var(--color-border);
+}
+
+
+/* ----- ROADMAP ITEM ----- */
+
+.roadmap-item {
+    position: relative;
+
+    display: grid;
+
+    grid-template-columns: 180px minmax(0, 1fr);
+
+    gap: 60px;
+
+    padding-bottom: 40px;
+}
+
+.roadmap-item:last-child {
+    padding-bottom: 0;
+}
+
+/* ----- ROADMAP LABEL ----- */
+
+.roadmap-label {
+    padding-top: 4px;
+}
+
+/* ----- ROADMAP MARKER ----- */
+
+.roadmap-marker {
+    position: absolute;
+
+    top: 0;
+    left: -80px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 50px;
+    height: 50px;
+
+    background-color: var(--color-background);
+
+    border: 1px solid var(--color-border);
+
+    color: var(--color-text-muted);
+
+    font-size: 0.75rem;
+    font-weight: 600;
+
+    letter-spacing: 0.08em;
+}
+
+/* ----- CURRENT MARKER ----- */
+
+.roadmap-current .roadmap-marker {
+    border-color: var(--color-accent);
+
+    color: var(--color-accent);
+
+    box-shadow:
+        0 0 0 6px rgba(183, 240, 0, 0.05);
+}
+
+/* ----- ROADMAP STATUS ----- */
+
+.roadmap-status {
+    display: block;
+
+    color: var(--color-accent);
+
+    font-size: 0.75rem;
+    font-weight: 600;
+
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+
+/* ----- ROADMAP HEADING ----- */
+
+.roadmap-content h4 {
+    margin-bottom: 16px;
+
+    font-size: 1.6rem;
+    font-weight: 600;
+
+    line-height: 1.2;
+}
+
+
+/* ----- ROADMAP TEXT ----- */
+
+.roadmap-content p {
+    max-width: 700px;
+
+    font-size: 1rem;
+
+    line-height: 1.8;
+}
+
+/* ----- JOURNAL ----- */
+
+#journal {
+    border-top: 1px solid var(--color-border);
+
+    padding-top: 140px;
+}
+
+
+/* ----- JOURNAL HEADER ----- */
+
+#journal .section-header {
+    max-width: 760px;
+}
+
+#journal .section-header h2 {
+    max-width: 850px;
+
+    font-size: clamp(3rem, 6vw, 5rem);
+
+    letter-spacing: -0.045em;
+}
+
+#journal .section-header h3 {
+    margin-top: 20px;
+
+    color: var(--color-text);
+
+    font-size: clamp(1.25rem, 2vw, 1.5rem);
+
+    font-weight: 500;
+    line-height: 1.4;
+}
+
+#journal .section-header p:not(.section-label) {
+    margin-top: 24px;
+
+    font-size: 1.05rem;
+    line-height: 1.8;
+}
+
+
+/* ----- JOURNAL LIST ----- */
+
+.journal-list {
+    margin-top: 80px;
+
+    border-top: 1px solid var(--color-border);
+}
+
+
+/* ----- JOURNAL ENTRY ----- */
+
+.journal-entry {
+    display: grid;
+
+    grid-template-columns: 220px 1fr;
+
+    gap: 60px;
+
+    padding: 48px 0;
+
+    border-bottom: 1px solid var(--color-border);
+
+    transition:
+        padding-left var(--transition-fast),
+        background-color var(--transition-fast);
+}
+
+
+/* ----- JOURNAL META ----- */
+
+.journal-meta {
+    display: flex;
+    flex-direction: column;
+
+    gap: 8px;
+}
+
+.journal-date {
+    color: var(--color-text-muted);
+
+    font-size: 0.8rem;
+    font-weight: 600;
+
+    letter-spacing: 0.08em;
+}
+
+.journal-category {
+    color: var(--color-accent);
+
+    font-size: 0.7rem;
+    font-weight: 600;
+
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+
+/* ----- JOURNAL CONTENT ----- */
+
+.journal-content {
+    max-width: 720px;
+}
+
+.journal-content h4 {
+    margin-bottom: 16px;
+
+    font-size: 1.5rem;
+    font-weight: 600;
+
+    line-height: 1.3;
+}
+
+.journal-content p {
+    max-width: 650px;
+
+    font-size: 0.95rem;
+    line-height: 1.8;
+}
+
+
+/* ----- JOURNAL LINK ----- */
+
+.journal-content a {
+    display: inline-block;
+
+    margin-top: 24px;
+
+    color: var(--color-text);
+
+    font-size: 0.85rem;
+    font-weight: 600;
+
+    transition: color var(--transition-fast);
+}
+
+.journal-content a:hover {
+    color: var(--color-accent);
+}
+
+
+/* ----- JOURNAL HOVER ----- */
+
+.journal-entry:hover {
+    padding-left: 12px;
+}
+
+.journal-entry:hover .journal-date {
+    color: var(--color-text);
+}
+
+/* ----- CONTACT ----- */
+
+#contact {
+    border-top: 1px solid var(--color-border);
+
+    padding-top: 140px;
+    padding-bottom: 160px;
+}
+
+/* ----- CONTACT HEADER ----- */
+
+#contact .section-heading {
+    max-width: 760px;
+}
+
+#contact .section-label {
+    display: block;
+
+    margin-bottom: 20px;
+}
+
+#contact .section-heading h2 {
+    max-width: 800px;
+
+    font-size: clamp(3rem, 6vw, 5rem);
+
+    letter-spacing: -0.045em;
+}
+
+#contact .section-heading h2 span {
+    display: block;
+
+    color: var(--color-text-muted);
+}
+
+#contact .section-heading p {
+    margin-top: 24px;
+
+    font-size: 1.05rem;
+    line-height: 1.8;
+}
+
+/* ----- CONTACT CONTENT ----- */
+
+.contact-content {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+
+    gap: 60px;
+
+    padding-top: 20px;
+}
+
+
+.contact-text {
+    max-width: 600px;
+}
+
+
+.contact-text {
+    display: flex;
+    flex-direction: column;
+
+    gap: 20px;
+}
+
+
+.contact-text p {
+    font-size: 1.05rem;
+    line-height: 1.8;
+}
+
+
+/* ----- CONTACT ACTION ----- */
+
+.contact-action a {
+    display: inline-block;
+
+    padding: 16px 24px;
+
+    border: 1px solid var(--color-border);
+
+    color: var(--color-text);
+
+    font-size: 1rem;
+    font-weight: 600;
+
+    transition:
+        color var(--transition-fast),
+        border-color var(--transition-fast),
+        background-color var(--transition-fast),
+        transform var(--transition-fast);
+}
+
+
+.contact-action a:hover {
+    color: var(--color-accent);
+
+    border-color: var(--color-accent);
+
+    background-color: rgba(183, 240, 0, 0.03);
+
+    transform: translateY(-2px);
+}
+
+#contact {
+    border-top: 1px solid var(--color-border);
+
+    padding-top: 140px;
+    padding-bottom: 160px;
+}
+
+/* ----- FOOTER ----- */
+
+footer {
+    width: min(100% - 40px, var(--content-width));
+    margin: 0 auto;
+
+    padding: 48px 0;
+
+    border-top: 1px solid var(--color-border);
+}
+
+
+/* ----- FOOTER CONTENT ----- */
+
+.footer-content {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+
+    gap: 40px;
+}
+
+
+/* ----- FOOTER BRAND ----- */
+
+.footer-brand {
+    display: flex;
+    flex-direction: column;
+
+    gap: 6px;
+}
+
+
+.footer-logo {
+    color: var(--color-text);
+
+    font-size: 1.25rem;
+    font-weight: 700;
+
+    letter-spacing: -0.04em;
+
+    transition: color var(--transition-fast);
+}
+
+
+.footer-logo:hover {
+    color: var(--color-accent);
+}
+
+
+.footer-brand p {
+    max-width: none;
+
+    color: var(--color-text-muted);
+
+    font-size: 0.75rem;
+    line-height: 1.5;
+}
+
+
+/* ----- FOOTER META ----- */
+
+.footer-meta {
+    display: flex;
+    flex-direction: column;
+
+    align-items: flex-end;
+
+    gap: 4px;
+
+    color: var(--color-text-muted);
+
+    font-size: 0.7rem;
+    line-height: 1.5;
+}
