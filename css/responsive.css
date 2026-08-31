@@ -1,0 +1,178 @@
+/* ==================================================
+   RESPONSIVE DESIGN
+   ================================================== */
+
+
+/* ----- MOBILE NAVIGATION TOGGLE ----- */
+
+.nav-toggle {
+    display: none;
+
+    width: 44px;
+    height: 44px;
+
+    padding: 0;
+
+    background: transparent;
+    border: 1px solid var(--color-border);
+
+    cursor: pointer;
+
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    gap: 5px;
+
+    transition:
+        border-color var(--transition-fast),
+        background-color var(--transition-fast);
+}
+
+
+/* ----- HAMBURGER LINES ----- */
+
+.nav-toggle span {
+    display: block;
+
+    width: 18px;
+    height: 1px;
+
+    background-color: var(--color-text);
+
+    transition:
+        transform var(--transition-fast),
+        opacity var(--transition-fast);
+}
+
+
+/* ----- HAMBURGER HOVER ----- */
+
+.nav-toggle:hover {
+    border-color: var(--color-accent);
+}
+
+.nav-toggle:hover span {
+    background-color: var(--color-accent);
+}
+
+
+/* ----- HAMBURGER FOCUS ----- */
+
+.nav-toggle:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 4px;
+}
+
+/* ==================================================
+   TABLET / MOBILE
+   ================================================== */
+
+/* ----- MOBILE NAVIGATION ----- */
+
+@media (max-width: 700px) {
+
+    header {
+        position: relative;
+    }
+
+    nav {
+        display: none;
+
+        position: absolute;
+
+        top: 100%;
+        left: 0;
+        right: 0;
+
+        z-index: 10;
+
+        padding: 5px 0;
+
+        background-color: var(--color-background);
+        border-bottom: 1px solid var(--color-border);
+    }
+
+    nav.is-open {
+        display: block;
+    }
+
+    nav ul {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+
+        gap: 20px;
+
+        list-style: none;
+    }
+
+    nav li {
+        width: auto;
+    }
+
+    nav a {
+        display: block;
+
+        padding: 1px 0;
+
+        font-size: 0.8rem;
+    }
+
+    nav a::after {
+        bottom: -1px;
+    }
+
+
+    /* ----- MOBILE TOGGLE ----- */
+
+    .nav-toggle {
+        display: flex;
+
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        gap: 5px;
+
+        width: 42px;
+        height: 42px;
+
+        padding: 0;
+
+        background: transparent;
+        border: 1px solid var(--color-border);
+
+        cursor: pointer;
+    }
+
+    .nav-toggle span {
+        display: block;
+
+        width: 18px;
+        height: 1px;
+
+        background-color: var(--color-text);
+
+        transition:
+            transform var(--transition-fast),
+            opacity var(--transition-fast);
+    }
+
+
+    /* ----- OPEN STATE ----- */
+
+    .nav-toggle[aria-expanded="true"] span:nth-child(1) {
+        transform: translateY(6px) rotate(45deg);
+    }
+
+    .nav-toggle[aria-expanded="true"] span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .nav-toggle[aria-expanded="true"] span:nth-child(3) {
+        transform: translateY(-6px) rotate(-45deg);
+    }
+
+}

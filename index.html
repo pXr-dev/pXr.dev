@@ -8,6 +8,7 @@
     <meta name="description" content="Persönliche Entwickler-Website von pXr">
 
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
 
     <title>pXr.dev | Developer Portfolio & Development Journal </title>
 </head>
@@ -22,7 +23,7 @@
         </a>
 
         <!-- HAUPTNAVIGATION -->
-        <nav aria-label="Hauptnavigation">
+        <nav id="main-navigation" aria-label="Hauptnavigation">
             <ul>
                 <li><a href="#home">Start</a></li>
                 <li><a href="#about">Über mich</a></li>
@@ -33,6 +34,19 @@
                 <li><a href="#contact">Kontakt</a></li>                
             </ul>
         </nav> 
+
+        <!-- MOBILE NAVIGATION TOGGLE -->
+        <button
+            class="nav-toggle"
+            type="button"
+            aria-label="Menü öffnen"
+            aria-expanded="false"
+            aria-controls="main-navigation"
+        >
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
 
      </header>
 
@@ -1095,6 +1109,8 @@
     </div>
 
 </footer>
+
+    <script src="js/script.js"></script>
 
 </body>
 
