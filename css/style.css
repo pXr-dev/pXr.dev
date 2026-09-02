@@ -57,6 +57,8 @@ body {
     color: var(--color-text);
     font-family: var(--font-main);
     line-height: 1.6;
+
+    overflow-x: hidden;
 }
 
 /* ----- LAYOUT ----- */
@@ -89,7 +91,7 @@ h2 {
 }
 
 h3 {
-    font-size: 1.5rem;
+    font-size: 1.25rem;
 }
 
 p {
@@ -461,9 +463,6 @@ nav a:hover::after {
 
     color: var(--color-text);
 
-    font-size: clamp(1.25rem, 2vw, 1.5rem);
-
-    font-weight: 500;
     line-height: 1.4;
 }
 
@@ -608,7 +607,6 @@ nav a:hover::after {
 .career h3 {
     margin-bottom: 20px;
 
-    font-size: clamp(2.2rem, 3.5vw, 2.8rem);
     letter-spacing: -0.035em;
 }
 
@@ -703,7 +701,6 @@ nav a:hover::after {
 .education h3 {
     margin-bottom: 20px;
 
-    font-size: clamp(2.2rem, 3.5vw, 2.8rem);
     letter-spacing: -0.035em;
 }
 
@@ -810,9 +807,6 @@ nav a:hover::after {
 
 .skill-card h3 {
     margin-bottom: 16px;
-
-    font-size: 1.5rem;
-    font-weight: 600;
 
     line-height: 1.2;
 }
@@ -1036,6 +1030,10 @@ nav a:hover::after {
     letter-spacing: -0.045em;
 }
 
+#projects .section-heading h3 {
+    margin-top: 20px;
+}
+
 #projects .section-heading h2 span {
     display: block;
 
@@ -1240,9 +1238,6 @@ nav a:hover::after {
 
     color: var(--color-text);
 
-    font-size: clamp(1.25rem, 2vw, 1.5rem);
-
-    font-weight: 500;
     line-height: 1.4;
 }
 
@@ -1409,9 +1404,6 @@ nav a:hover::after {
 
     color: var(--color-text);
 
-    font-size: clamp(1.25rem, 2vw, 1.5rem);
-
-    font-weight: 500;
     line-height: 1.4;
 }
 
@@ -1646,78 +1638,59 @@ nav a:hover::after {
     padding-bottom: 160px;
 }
 
-/* ----- FOOTER ----- */
+/* ==================================================
+   FOOTER
+   ================================================== */
 
 footer {
     width: min(100% - 40px, var(--content-width));
     margin: 0 auto;
-
     padding: 48px 0;
-
     border-top: 1px solid var(--color-border);
 }
 
-
-/* ----- FOOTER CONTENT ----- */
-
 .footer-content {
     display: flex;
-    align-items: flex-end;
+    align-items: baseline;
     justify-content: space-between;
-
     gap: 40px;
 }
 
-
-/* ----- FOOTER BRAND ----- */
-
 .footer-brand {
     display: flex;
-    flex-direction: column;
-
-    gap: 6px;
+    align-items: baseline;
+    gap: 20px;
 }
-
 
 .footer-logo {
     color: var(--color-text);
-
     font-size: 1.25rem;
-    font-weight: 700;
-
-    letter-spacing: -0.04em;
-
-    transition: color var(--transition-fast);
+    font-weight: 600;
 }
 
-
-.footer-logo:hover {
-    color: var(--color-accent);
-}
-
-
-.footer-brand p {
-    max-width: none;
-
+.footer-description {
     color: var(--color-text-muted);
-
-    font-size: 0.75rem;
-    line-height: 1.5;
+    font-size: 0.5rem;
 }
 
-
-/* ----- FOOTER META ----- */
+.footer-description::before {
+    content: "·";
+    margin-right: 10px;
+    color: var(--color-text-muted);
+}
 
 .footer-meta {
     display: flex;
-    flex-direction: column;
-
-    align-items: flex-end;
-
-    gap: 4px;
+    align-items: baseline;
+    gap: 20px;
 
     color: var(--color-text-muted);
-
     font-size: 0.7rem;
     line-height: 1.5;
+}
+
+.footer-meta span + span::before {
+    content: "·";
+    margin-right: 10px;
+    color: var(--color-text-muted);
 }
