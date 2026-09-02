@@ -117,7 +117,7 @@
 
         padding: 1px 0;
 
-        font-size: 0.8rem;
+        font-size: 0.6rem;
     }
 
     nav a::after {
@@ -173,6 +173,121 @@
 
     .nav-toggle[aria-expanded="true"] span:nth-child(3) {
         transform: translateY(-6px) rotate(-45deg);
+    }
+
+    /* ----- SKILLS ----- */
+
+    .skills-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .skill-card {
+        min-height: auto;
+        border-right: none;
+        border-bottom: 1px solid var(--color-border);
+    }
+
+    .skill-card:last-child {
+        border-bottom: none;
+    }
+
+    /* ----- MOBILE LAYOUTS ----- */
+
+    .project-card,
+    .roadmap-item,
+    .journal-entry {
+        grid-template-columns: 1fr;
+    }
+
+    .project-content {
+        border-left: none;
+        border-top: 1px solid var(--color-border);
+    }
+
+    .roadmap-item {
+        gap: 24px;
+    }
+
+    .journal-entry {
+        gap: 24px;
+    }
+
+    /* ----- MOBILE ROADMAP ----- */
+
+    .development-roadmap {
+        padding-left: 48px;
+    }
+
+    .development-roadmap::before {
+        left: 16px;
+    }
+
+    .roadmap-marker {
+        left: -48px;
+
+        width: 36px;
+        height: 36px;
+    }
+
+    /* ----- MOBILE TIMELINES ----- */
+
+    .career-timeline,
+    .education-timeline {
+        padding-left: 32px;
+    }
+
+    .career-item::before,
+    .education-item::before {
+        left: -38px;
+    }
+
+    /* ----- CONTACT ----- */
+
+    .contact-content {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 32px;
+    }
+
+    .contact-text {
+        max-width: 700px;
+    }
+
+    .contact-action {
+        width: 100%;
+    }
+
+    /* ----- FOOTER ----- */
+
+    .footer-content {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+    }
+
+    .footer-brand {
+        align-items: baseline;
+        gap: 16px;
+        flex-wrap: wrap;
+    }
+
+    .footer-meta {
+        flex-wrap: wrap;
+        align-items: baseline;
+        gap: 16px;
+    }
+}
+
+/* ==================================================
+   SMALL MOBILE
+   ================================================== */
+
+@media (max-width: 480px) {
+
+    section,
+    header,
+    footer {
+        width: min(100% - 24px, var(--content-width));
     }
 
 }
