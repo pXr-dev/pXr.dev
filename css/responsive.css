@@ -291,3 +291,20 @@
     }
 
 }
+
+@media (max-width: 430px) {
+
+    nav ul {
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 8px 14px;
+    }
+
+    nav a {
+        font-size: 0.6rem;
+    }
+
+    nav {
+        padding: 4px 0;
+    }
+}
