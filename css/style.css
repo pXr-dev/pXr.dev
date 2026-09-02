@@ -49,7 +49,7 @@
 }
 
 html {
-    scroll-behavior: smooth;
+    scroll-behavior: auto;
 }
 
 body {
@@ -146,6 +146,7 @@ header {
 }
 
 /* ----- NAVIGATION ----- */
+
 nav ul {
     display: flex;
     align-items: center;
