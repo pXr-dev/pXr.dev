@@ -204,7 +204,7 @@ nav a:hover::after {
     display: flex;
     align-items: center;
 
-    padding-top: 60px;
+    padding-top: 15px;
     padding-bottom: 100px;
 
     overflow: hidden;
